@@ -42,7 +42,10 @@ public enum IndexConfigTypeEnum {
         return DEFAULT;
     }
 
-    //
+    /**
+     * 第一次修改内容
+     * @return
+     */
 
     public int getType() {
         return type;
