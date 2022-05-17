@@ -42,6 +42,8 @@ public enum IndexConfigTypeEnum {
         return DEFAULT;
     }
 
+    //
+
     public int getType() {
         return type;
     }
