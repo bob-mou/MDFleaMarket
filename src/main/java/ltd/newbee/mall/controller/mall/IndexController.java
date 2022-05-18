@@ -8,18 +8,23 @@
  */
 package ltd.newbee.mall.controller.mall;
 
+import cn.hutool.core.date.DateTime;
 import ltd.newbee.mall.common.Constants;
 import ltd.newbee.mall.common.IndexConfigTypeEnum;
 import ltd.newbee.mall.common.NewBeeMallException;
 import ltd.newbee.mall.controller.vo.NewBeeMallIndexCarouselVO;
 import ltd.newbee.mall.controller.vo.NewBeeMallIndexCategoryVO;
 import ltd.newbee.mall.controller.vo.NewBeeMallIndexConfigGoodsVO;
+import ltd.newbee.mall.entity.ContactInfo;
 import ltd.newbee.mall.service.NewBeeMallCarouselService;
 import ltd.newbee.mall.service.NewBeeMallCategoryService;
 import ltd.newbee.mall.service.NewBeeMallIndexConfigService;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -53,5 +58,23 @@ public class IndexController {
         request.setAttribute("newGoodses", newGoodses);//新品
         request.setAttribute("recommendGoodses", recommendGoodses);//推荐商品
         return "mall/index";
+    }
+    @GetMapping("/contactUs")
+    public String contactUs() {
+        return "mall/formpage";
+    }
+    @GetMapping("/doContactUs")
+    public String docontactUs(@RequestParam("name") String name,
+                              @RequestParam("email") String email,
+                              @RequestParam("message") String message){
+        ContactInfo contactInfo = new ContactInfo();
+        contactInfo.setCreate_date(new DateTime());
+        contactInfo.setEmail(email);
+        contactInfo.setMessage(message);
+        contactInfo.setName(name);
+        System.out.println(contactInfo.toString());
+        //发送邮件给我
+
+        return "mall/formpage";
     }
 }

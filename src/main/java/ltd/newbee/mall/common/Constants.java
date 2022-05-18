@@ -44,4 +44,6 @@ public class Constants {
     public final static int SELL_STATUS_UP = 0;//商品上架状态
     public final static int SELL_STATUS_DOWN = 1;//商品下架状态
 
+    public final static String EMAIL_MLB = "596280267@qq.com";//牟连波的邮箱号码
+
 }
