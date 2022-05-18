@@ -10,45 +10,104 @@
     <link rel="stylesheet" href="/admin/plugins/bootstrap/bootstrap-3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/admin/plugins/bootstrap/bootstrap-3.4.1/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/mall/css/form.css">
+    <link rel="stylesheet" href="/admin/plugins/bootstrap/bootoast/dist/bootoast.min.css">
     <!-- jQuery -->
+    <script th:src="@{/admin/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/admin/plugins/jquery/jquery.min.js}"></script>
+    <script th:src="@{/admin/plugins/bootstrap/bootoast/dist/bootoast.min.js}"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 " id="form_container">
-                <h2>联系作者</h2>
-                <p> 非常感谢您的反馈. 我们会尽快回复您的消息！！ </p>
-                <form role="form" method="get" action ="doContactUs" >
-                    <div class="row">
-                        <div class="col-sm-12 form-group">
-                            <label for="message"> Message:</label>
-                            <textarea class="form-control" type="textarea" id="message" name="message" maxlength="6000" rows="7"></textarea>
-                        </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 " id="form_container">
+
+            <button type="button" class="btn btn-primary" id="liveToastBtn">显示吐司消息</button>
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
+                <div id="liveToast" class="toast hide" data-bs-animation="false" role="alert" aria-live="assertive"
+                     aria-atomic="true">
+                    <div>
+                        <strong>吐司消息提示</strong>
+                        <small>11 mins ago</small>
+                        <button type="button" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6 form-group">
-                            <label for="name"> Your Name:</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
-                        </div>
-                        <div class="col-sm-6 form-group">
-                            <label for="email"> Email:</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
+                    <div>
+                        你有一条短消息！
                     </div>
-                    <div class="row">
-                        <div class="col-sm-12 form-group">
-                            <button type="submit" class="btn btn-lg btn-default pull-right">Send &rarr;</button>
-                        </div>
-                    </div>
-                </form>
-                <div id="success_message" style="width:100%; height:100%; display:none; ">
-                    <h3>Posted your message successfully!</h3>
                 </div>
-                <div id="error_message" style="width:100%; height:100%; display:none; ">
-                    <h3>Error</h3> Sorry there was an error sending your form. </div>
+            </div>
+
+            <h2>联系作者</h2>
+            <p> 非常感谢您的反馈. 我们会尽快回复您的消息！！ </p>
+            <form role="form" method="get" action="doContactUs">
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <label for="message"> Message:</label>
+                        <textarea class="form-control" type="textarea" id="message" name="message" maxlength="6000"
+                                  rows="7"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label for="name"> Your Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label for="email"> Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <button type="submit" class="btn btn-lg btn-default pull-right" id="ToastBtn">Send &rarr;
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div id="success_message" style="width:100%; height:100%; display:none; ">
+                <h3>Posted your message successfully!</h3>
+            </div>
+            <div id="error_message" style="width:100%; height:100%; display:none; ">
+                <h3>Error</h3> Sorry there was an error sending your form.
             </div>
         </div>
     </div>
+</div>
+<div>
+<button id="info" class="btn btn-info">Info</button>
+<button id="success" class="btn btn-success">Success</button>
+<button id="warning" class="btn btn-warning">Warning</button>
+<button id="danger" class="btn btn-danger">Danger</button>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script th:src="@{/admin/plugins/bootstrap/bootoast/dist/bootoast.min.js}"></script>
+<script>
+$( "#info" ).click(function() {
+  bootoast({
+    message: 'This is an info toast message'
+  });
+});
+
+$( "#success" ).click(function() {
+  bootoast({
+    message: 'This is a success toast message',
+	 type: 'success'
+  });
+});
+
+$( "#warning" ).click(function() {
+  bootoast({
+    message: 'This is a warning toast message',
+	 type: 'warning'
+  });
+});
+
+$( "#danger" ).click(function() {
+  bootoast({
+    message: 'This is a danger toast message',
+	 type: 'danger'
+  });
+});
+</script>
 </body>
 </html>
