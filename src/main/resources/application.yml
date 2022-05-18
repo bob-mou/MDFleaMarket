@@ -1,0 +1,28 @@
+# 服务器配置
+server:
+  port: 8088
+
+#spring配置信息
+spring:
+  # thymeleaf 模板引擎配置信息
+  thymeleaf:
+    # 开发时为false（方便检查运行问题），实际运行时为true（加快运行速度）
+    cache: false
+    #数据库配置信息
+  datasource:
+    name: newbee-mall-datasource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 10000
+      maximum-pool-size: 15
+      pool-name: hikariCP
+      max-lifetime: 30000
+      auto-commit: true
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+mybatis:
+  # 可以替代@Mapper注解
+  mapper-locations:
+    - classpath:mapper/*Mapper.xml
